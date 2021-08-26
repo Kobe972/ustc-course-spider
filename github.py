@@ -1,7 +1,7 @@
 import requests
 import time
 from lxml import etree
-name="数据结构"
+name="复变函数"
 content=''
 for page in range(0,9):
     url='https://github.com/search?p='+str(page+1)+'&q=ustc+course&type=Repositories'
