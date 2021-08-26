@@ -1,13 +1,11 @@
 # Auto-report action script, 3 times a day
 
-name: Auto-report action
+name: Spyder action
 
 on: 
   push:
     branches:
       - master
-  schedule:
-    - cron: '15 0 * * *'
 
 jobs:
   build:
