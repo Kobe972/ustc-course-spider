@@ -11,7 +11,7 @@ for page in range(0,20):
     print(len(repo))
     for href in repo:
         text=requests.get('https://github.com/'+href).text
-        print(text)
+        print('https://github.com/'+href)
         if name in text:
             content+=name+'\n'
         print('counter:',counter+1)
