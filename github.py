@@ -8,8 +8,10 @@ for page in range(0,20):
     text=requests.get(url).text
     html=etree.HTML(text)
     repo=html.xpath('//a[@class="v-align-middle"]/@href')
+    print(len(repo))
     for href in repo:
         text=requests.get('https://github.com/'+href).text
+        print(text)
         if name in text:
             content+=name+'\n'
         print('counter:',counter+1)
