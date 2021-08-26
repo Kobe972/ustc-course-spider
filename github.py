@@ -9,13 +9,12 @@ for page in range(0,20):
     text=requests.get(url).text
     html=etree.HTML(text)
     repo=html.xpath('.//a[@class="v-align-middle"]/@href')
+    if page==12:
+        print(text)
     for href in repo:
         text=requests.get('https://github.com'+href).text
-        if flag==0:
-            print(text)
-            flag=1
         if name in text:
-            content+=name+'\n'
+            content+=href+'\n'
         print('counter:',counter+1)
         counter+=1
 print(content)
