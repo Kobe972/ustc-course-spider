@@ -32,7 +32,7 @@ with open(args.data_path, "r+") as f:
     data["authenticity_token"]=authenticity_token[0]
     data["timestamp"]=timestamp[0]
     data["timestamp_secret"]=timestamp_secret[0]
-    data['login']=args.login
+    data['login']='xuyichang@mail.ustc.edu.cn',
     data['password']=args.password
     data[field[0]]=''
 print(data)
