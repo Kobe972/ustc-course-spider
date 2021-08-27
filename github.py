@@ -16,6 +16,7 @@ content=''
 progress=0
 flag=0
 session=requests.Session()
+headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36'}
 
 #登录github
 form=session.get('https://github.com/login').text
@@ -71,7 +72,7 @@ for page in range(0,20):
             print('The spyder has explored',progress,'repositories.')
             print('Useful repositories:')
             print(content)
-        text=session.get('https://github.com'+data_url[0]).text
+        text=session.get('https://github.com'+data_url[0],headers=headers).text
         if flag==0:
             print('data-url:',data_url[0])
             print('json:',text)
