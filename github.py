@@ -14,6 +14,7 @@ args = parser.parse_args()
 name="数据结构"
 content=''
 progress=0
+flag=0
 session=requests.Session()
 
 #登录github
@@ -71,6 +72,9 @@ for page in range(0,20):
             print('Useful repositories:')
             print(content)
         text=session.get('https://github.com'+data_url[0]).text
+        if flag==0:
+            print(text)
+            flag=1
         if name in text:
             content+=href+'\n'
         progress+=1
