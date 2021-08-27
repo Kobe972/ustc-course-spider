@@ -12,7 +12,10 @@ args = parser.parse_args()
 name="复变函数"
 content=''
 session=requests.Session()
-form=session.get('https://github.com/login').text
+headers={'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36 Edg/92.0.902.78'}
+session.cookies['_device_id']='29b922d78b8501b6ca6606e7e9707efd'
+session.cookies['tz']='Asia%2FShanghai'
+form=session.get('https://github.com/login',headers=headers).text
 form=etree.HTML(form)
 authenticity_token=form.xpath('.//input[@name="authenticity_token"]/@value')
 timestamp=form.xpath('.//input[@name="timestamp"]/@value')
@@ -27,7 +30,7 @@ with open(args.data_path, "r+") as f:
     data['login']=args.login
     data['password']=args.password
     data[field[0]]=''
-print(session.post('https://github.com/session',data=data).text)
+print(session.post('https://github.com/session',data=data,headers=headers).text)
 '''
 for page in range(0,20):
     url='https://github.com/search?p='+str(page+1)+'&q=ustc+course&type=Repositories'
