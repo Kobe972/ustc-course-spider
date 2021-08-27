@@ -3,6 +3,7 @@ import requests
 import time
 import json
 from lxml import etree
+from mail import Email
 
 parser = argparse.ArgumentParser(description='Ustc-course Spyder')
 parser.add_argument('data_path', help='path to your own data used for post method', type=str)
@@ -35,8 +36,6 @@ with open(args.data_path, "r+") as f:
     data['login']=args.login
     data['password']=args.password
     data[field[0]]=''
-print(data)
-'''
 text=session.post('https://github.com/session',data=data,headers=headers).text
 if 'Device verification code' in text:
     text=etree.HTML(text)
@@ -49,7 +48,7 @@ if 'Device verification code' in text:
         LT=Email(email,password,pop3_server).get_LT()
     data={'authenticity_token':authenticity_token,
           'otp':LT}
-    session.post('https://github.com/sessions/verified-device',data=data)
+    print(session.post('https://github.com/sessions/verified-device',data=data).text)
 
 for page in range(0,20):
     url='https://github.com/search?p='+str(page+1)+'&q=ustc+course&type=Repositories'
@@ -65,4 +64,4 @@ for page in range(0,20):
         if name in text:
             content+=href+'\n'
 print(content)
-'''
+
