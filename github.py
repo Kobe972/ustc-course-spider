@@ -1,6 +1,7 @@
 import argparse
 import requests
 import time
+import os
 import json
 from lxml import etree
 from mail import Email #如果不用科大邮箱，mail.py取最新一封邮件的代码可能也要改。科大邮箱默认最新未读邮件索引是1
@@ -36,6 +37,20 @@ with open(args.data_path, "r+") as f:
     data[field[0]]=''
 text=session.post('https://github.com/session',data=data).text
 
+def check(path,sub_tree,name):
+    name in path:
+        return True
+    path_tree = os.listdir(path)     #获取当前目录下的文件和目录
+
+    for item in path_tree:
+        if name in item:
+            return True
+        subtree= path+'\\'+item
+            if os.path.isdir(subtree):      #判断是否为目录
+                return dir_tree(subtree,sub_tree+1)   #递归深度优先遍历
+            else:
+                return False
+
 #输入邮箱验证码
 if 'Device verification code' in text:
     text=etree.HTML(text)
@@ -58,6 +73,11 @@ for page in range(0,20):
     repo=html.xpath('.//a[@class="v-align-middle"]/@href')
     for href in repo:
         text=session.get('https://github.com'+href).text
+        os.system('git clone '+'https://github.com'+href+'.git --bare')
+        if check('.'+href):
+            content+=href+'\n'
+        os.system('rm -rf .'+href)
+        '''
         html=etree.HTML(text)
         branch=html.xpath('.//span[@class="css-truncate-target"]/text()')
         if(len(branch)==0): #空仓库没有branch
@@ -80,4 +100,5 @@ for page in range(0,20):
         if name in text:
             content+=href+'\n'
         progress+=1
+        '''
 print(content)
