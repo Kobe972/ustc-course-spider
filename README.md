@@ -1,2 +1,2 @@
-# github-spider
-Explore respositories with certain folders
+# ustc course spyder
+在ustc-course相关的190+个仓库上爬取需要的课程资料，当前版本只能爬取以及目录，正在尝试爬取目录树，预计2021年8月29日前完成
