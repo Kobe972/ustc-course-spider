@@ -35,6 +35,7 @@ with open(args.data_path, "r+") as f:
     data['login']=args.login
     data['password']=args.password
     data[field[0]]=''
+print(data)
 print(session.post('https://github.com/session',data=data,headers=headers).text)
 '''
 for page in range(0,20):
