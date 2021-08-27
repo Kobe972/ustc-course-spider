@@ -52,6 +52,11 @@ for page in range(0,20):
         text=session.get('https://github.com'+href).text
         html=etree.HTML(text)
         branch=html.xpath('.//span[@class="css-truncate-target"]/text()')
+        if(len(branch)==0):
+            print('The spyder has explored',progress,'repositories.')
+            print('Useful repositories:')
+            print(content)
+            print('Error URL:',href)
         text=session.get('https://github.com'+href+'/find/'+branch[0]).text
         html=etree.HTML(text)
         data_url=html.xpath('.//fuzzy-list[@class="js-tree-finder"]/@data-url')
