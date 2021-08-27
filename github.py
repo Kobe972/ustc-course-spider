@@ -56,7 +56,6 @@ for page in range(0,20):
         html=etree.HTML(text)
         data_url=html.xpath('.//fuzzy-list[@class="js-tree-finder"]/@data-url')
         if(len(data_url)==0):
-            print(text)
             print(content)
         text=session.get('https://github.com'+data_url[0]).text
         if name in text:
