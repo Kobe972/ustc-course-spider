@@ -47,7 +47,7 @@ def check(path,sub_tree,name):
             return True
         subtree= path+'\\'+item
         if os.path.isdir(subtree):      #判断是否为目录
-            return dir_tree(subtree,sub_tree+1)   #递归深度优先遍历
+            return check(subtree,sub_tree+1,name)   #递归深度优先遍历
         else:
             return False
 
@@ -74,7 +74,7 @@ for page in range(0,20):
     for href in repo:
         text=session.get('https://github.com'+href).text
         os.system('git clone '+'https://github.com'+href+'.git --bare')
-        if check('.'+href):
+        if check('.'+href,name):
             content+=href+'\n'
         os.system('rm -rf .'+href)
         '''
