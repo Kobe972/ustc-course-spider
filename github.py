@@ -47,7 +47,7 @@ if 'Device verification code' in text:
     LT=None
     while LT==None:
         LT=Email(email,password,pop3_server).get_LT()
-    data={'authenticity_token':authenticity_token,
+    data={'authenticity_token':authenticity_token[0],
           'otp':LT}
     print(session.post('https://github.com/sessions/verified-device',data=data).text)
 
