@@ -46,10 +46,10 @@ def check(path,sub_tree,name):
         if name in item:
             return True
         subtree= path+'\\'+item
-            if os.path.isdir(subtree):      #判断是否为目录
-                return dir_tree(subtree,sub_tree+1)   #递归深度优先遍历
-            else:
-                return False
+        if os.path.isdir(subtree):      #判断是否为目录
+            return dir_tree(subtree,sub_tree+1)   #递归深度优先遍历
+        else:
+            return False
 
 #输入邮箱验证码
 if 'Device verification code' in text:
