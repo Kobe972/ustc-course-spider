@@ -19,6 +19,7 @@ headers={'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537
         }
 session.cookies['_device_id']='29b922d78b8501b6ca6606e7e9707efd'
 session.cookies['tz']='Asia%2FShanghai'
+session.cookies['_octo']='GH1.1.339731349.1630050979'
 form=session.get('https://github.com/login',headers=headers).text
 form=etree.HTML(form)
 authenticity_token=form.xpath('.//input[@name="authenticity_token"]/@value')
