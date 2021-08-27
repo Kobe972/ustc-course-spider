@@ -38,7 +38,7 @@ with open(args.data_path, "r+") as f:
 text=session.post('https://github.com/session',data=data).text
 
 def check(path,sub_tree,name):
-    name in path:
+    if name in path:
         return True
     path_tree = os.listdir(path)     #获取当前目录下的文件和目录
 
