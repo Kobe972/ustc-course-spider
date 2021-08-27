@@ -12,7 +12,11 @@ args = parser.parse_args()
 name="复变函数"
 content=''
 session=requests.Session()
-headers={'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36 Edg/92.0.902.78'}
+headers={'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36 Edg/92.0.902.78',
+         'sec-ch-ua':'"Chromium";v="92", " Not A;Brand";v="99", "Microsoft Edge";v="92"',
+         'origin':'https://github.com',
+         'referer':'https://github.com/session'
+        }
 session.cookies['_device_id']='29b922d78b8501b6ca6606e7e9707efd'
 session.cookies['tz']='Asia%2FShanghai'
 form=session.get('https://github.com/login',headers=headers).text
