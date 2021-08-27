@@ -17,7 +17,7 @@ form=etree.HTML(form)
 authenticity_token=form.xpath('.//input[@name="authenticity_token"]/@value')
 timestamp=form.xpath('.//input[@name="timestamp"]/@value')
 timestamp_secret=form.xpath('.//input[@name="timestamp_secret"]/@value')
-field=form.xpath('.//input[@type="text"]/@name')
+field=form.xpath('.//input[@type="text" and contains(@name,"required")]/@name')
 with open(args.data_path, "r+") as f:
     data = f.read()
     data = json.loads(data)
