@@ -17,6 +17,7 @@ form=etree.HTML(form)
 authenticity_token=form.xpath('.//input[@name="authenticity_token"]/@value')
 timestamp=form.xpath('.//input[@name="timestamp"]/@value')
 timestamp_secret=form.xpath('.//input[@name="timestamp_secret"]/@value')
+field=form.xpath('.//input[@type="text"]/@name')
 with open(args.data_path, "r+") as f:
     data = f.read()
     data = json.loads(data)
@@ -25,6 +26,7 @@ with open(args.data_path, "r+") as f:
     data["timestamp_secret"]=timestamp_secret[0]
     data['login']=args.login
     data['password']=args.password
+    data[field[0]]=''
 print(data)
 session.post('https://github.com/session',data=data)
 print(session.get('https://github.com').text)
