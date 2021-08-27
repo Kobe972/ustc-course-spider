@@ -50,7 +50,7 @@ for page in range(0,20):
     repo=html.xpath('.//a[@class="v-align-middle"]/@href')
     for href in repo:
         time.sleep(1)
-        text=session.get('https://github.com'+href+'/find/master').text
+        text=session.get('https://github.com'+href[0]+'/find/master').text
         html=etree.HTML(text)
         data_url=html.xpath('.//fuzzy-list[@class="js-tree-finder"]/@data-url')
         if(len(data_url)==0):
