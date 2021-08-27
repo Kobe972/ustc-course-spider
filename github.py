@@ -25,8 +25,10 @@ with open(args.data_path, "r+") as f:
     data["timestamp_secret"]=timestamp_secret
     data['login']=args.login
     data['password']=args.password
+print(data)
+'''
 session.post('https://github.com/session',data=data)
-print(session.get('https://github.com').text)
+#print(session.get('https://github.com').text)
 for page in range(0,20):
     url='https://github.com/search?p='+str(page+1)+'&q=ustc+course&type=Repositories'
     text=session.get(url).text
@@ -41,3 +43,4 @@ for page in range(0,20):
         if name in text:
             content+=href+'\n'
 print(content)
+'''
