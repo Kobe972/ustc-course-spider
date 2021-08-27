@@ -23,16 +23,10 @@ class Email:
                 charset = content_type[pos + 8:].strip()
         return charset
 
-    def decode_str(self,s):
-        value, charset = decode_header(s)[0]
-        if charset:
-            value = value.decode(charset)
-        return value
-
     def get_LT(self):
-        server = poplib.POP3(pop3_server)
-        server.user(email)
-        server.pass_(password)
+        server = poplib.POP3(self.pop3_server)
+        server.user(self.account)
+        server.pass_(self.password)
         resp, mails, octets = server.list()
         # 获取最新一封邮件, 注意索引号从1开始:
         index = len(mails)
@@ -46,7 +40,6 @@ class Email:
         value = msg.get('From', '')
         if value:
             hdr, addr = parseaddr(value)
-            #name = self.decode_str(hdr)
             value = u'%s <%s>' % (hdr, addr)
         else:
             server.quit()
