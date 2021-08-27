@@ -37,7 +37,7 @@ with open(args.data_path, "r+") as f:
     data[field[0]]=''
 text=session.post('https://github.com/session',data=data).text
 
-def check(path,sub_tree,name):
+def check(path,name):
     if name in path:
         return True
     path_tree = os.listdir(path)     #获取当前目录下的文件和目录
@@ -47,7 +47,7 @@ def check(path,sub_tree,name):
             return True
         subtree= path+'\\'+item
         if os.path.isdir(subtree):      #判断是否为目录
-            return check(subtree,sub_tree+1,name)   #递归深度优先遍历
+            return check(subtree,name)   #递归深度优先遍历
         else:
             return False
 
