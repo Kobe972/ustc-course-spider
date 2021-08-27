@@ -51,7 +51,11 @@ for page in range(0,20):
     for href in repo:
         time.sleep(1)
         print(href)
-        text=session.get('https://github.com'+href+'/find/master').text
+        text=session.get('https://github.com'+href).text
+        html=etree.HTML(text)
+        branch=html.xpath('.//span[@class="css-truncate-target"]/text()')
+        print(branch)
+        text=session.get('https://github.com'+href+'/find/'+branch).text
         html=etree.HTML(text)
         data_url=html.xpath('.//fuzzy-list[@class="js-tree-finder"]/@data-url')
         if(len(data_url)==0):
