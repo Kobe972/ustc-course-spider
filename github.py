@@ -12,8 +12,8 @@ for page in range(0,20):
     for href in repo:
         text=requests.get('https://github.com'+href+'/find/master').text
         html=etree.HTML(text)
-        data-url=html.xpath('.//fuzzy-list[@class="js-tree-finder"]/@data-url')
-        text=requests.get('https://github.com'+data-url).text
+        data_url=html.xpath('.//fuzzy-list[@class="js-tree-finder"]/@data-url')
+        text=requests.get('https://github.com'+data_url).text
         if name in text:
             content+=href+'\n'
 print(content)
