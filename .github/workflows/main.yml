@@ -29,4 +29,4 @@ jobs:
         LOGIN: ${{ secrets.LOGIN }}
         PASSWORD: ${{ secrets.PASSWORD }}
       run: |
-        python github.py data.json "$LOGIN" "$PASSWORD"
+        python github.py data.json xuyichang@mail.ustc.edu.cn "$PASSWORD"
