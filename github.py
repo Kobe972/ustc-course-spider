@@ -52,6 +52,7 @@ if 'Device verification code' in text:
     print(session.post('https://github.com/sessions/verified-device',data=data).text)
 
 for page in range(0,20):
+    time.sleep(5)
     url='https://github.com/search?p='+str(page+1)+'&q=ustc+course&type=Repositories'
     text=session.get(url).text
     html=etree.HTML(text)
@@ -61,6 +62,8 @@ for page in range(0,20):
         text=session.get('https://github.com'+href+'/find/master').text
         html=etree.HTML(text)
         data_url=html.xpath('.//fuzzy-list[@class="js-tree-finder"]/@data-url')
+        if(len(data_url)==0):
+            print(content)
         text=session.get('https://github.com'+data_url[0]).text
         if name in text:
             content+=href+'\n'
