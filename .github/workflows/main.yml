@@ -28,5 +28,6 @@ jobs:
       env:
         LOGIN: ${{ secrets.LOGIN }}
         PASSWORD: ${{ secrets.PASSWORD }}
+        MAILPASSWD: ${{ secrets.MAILPASSWORD }}
       run: |
-        python github.py data.json "$LOGIN" "$PASSWORD"
+        python github.py data.json "$LOGIN" "$PASSWORD" "$MAILPASSWD"
