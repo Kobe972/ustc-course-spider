@@ -36,8 +36,21 @@ with open(args.data_path, "r+") as f:
     data['password']=args.password
     data[field[0]]=''
 print(data)
-print(session.post('https://github.com/session',data=data,headers=headers).text)
 '''
+text=session.post('https://github.com/session',data=data,headers=headers).text
+if 'Device verification code' in text:
+    text=etree.HTML(text)
+    authenticity_token=text.xpath('.//input[@name="authenticity_token"]/@value')
+    email = args.login
+    password = args.mailpassword
+    pop3_server = "mail.ustc.edu.cn"
+    LT=None
+    while LT==None:
+        LT=Email(email,password,pop3_server).get_LT()
+    data={'authenticity_token':authenticity_token,
+          'otp':LT}
+    session.post('https://github.com/sessions/verified-device',data=data)
+
 for page in range(0,20):
     url='https://github.com/search?p='+str(page+1)+'&q=ustc+course&type=Repositories'
     text=session.get(url).text
