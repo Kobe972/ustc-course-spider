@@ -73,7 +73,8 @@ for page in range(0,20):
             print(content)
         text=session.get('https://github.com'+data_url[0]).text
         if flag==0:
-            print(text)
+            print('data-url:',data_url[0])
+            print('json:',text)
             flag=1
         if name in text:
             content+=href+'\n'
