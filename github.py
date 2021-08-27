@@ -41,8 +41,7 @@ if 'Device verification code' in text:
         LT=Email(email,password,pop3_server).get_LT()
     data={'authenticity_token':authenticity_token[0],
           'otp':LT}
-    print(session.post('https://github.com/sessions/verified-device',data=data).text)
-print(session.cookies)
+    session.post('https://github.com/sessions/verified-device',data=data)
 for page in range(0,20):
     time.sleep(5)
     url='https://github.com/search?p='+str(page+1)+'&q=ustc+course&type=Repositories'
@@ -55,9 +54,9 @@ for page in range(0,20):
         html=etree.HTML(text)
         data_url=html.xpath('.//fuzzy-list[@class="js-tree-finder"]/@data-url')
         if(len(data_url)==0):
+            print(text)
             print(content)
         text=session.get('https://github.com'+data_url[0]).text
         if name in text:
             content+=href+'\n'
 print(content)
-
