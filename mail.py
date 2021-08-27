@@ -3,7 +3,6 @@ from email.header import decode_header
 from email.utils import parseaddr
 import poplib
 import re
-import poplib
 poplib._MAXLINE=20480
 
 
