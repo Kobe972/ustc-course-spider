@@ -25,5 +25,8 @@ jobs:
         pip install requests
         pip install lxml
     - name: Run the script
+      env:
+        LOGIN: ${{ secrets.LOGIN }}
+        PASSWORD: ${{ secrets.PASSWORD }}
       run: |
-        python github.py
+        python github.py data.json $LOGIN $PASSWORD
