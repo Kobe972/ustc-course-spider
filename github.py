@@ -8,7 +8,8 @@ from mail import Email
 parser = argparse.ArgumentParser(description='Ustc-course Spyder')
 parser.add_argument('data_path', help='path to your own data used for post method', type=str)
 parser.add_argument('login', help='email address or github name', type=str)
-parser.add_argument('password', help='your password', type=str)
+parser.add_argument('password', help='your password of GitHub', type=str)
+parser.add_argument('mailpassword', help='your password of your USTC email', type=str)
 args = parser.parse_args()
 name="复变函数"
 content=''
