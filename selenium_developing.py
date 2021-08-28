@@ -8,6 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import requests
 from tqdm import tqdm
 import argparse
+import time
 from lxml import etree
 from mail import Email #如果不用科大邮箱，mail.py取最新一封邮件的代码可能也要改。科大邮箱默认最新未读邮件索引是1
 
@@ -65,6 +66,7 @@ if 'Device verification code' in text:
     email = args.login
     password = args.mailpassword
     pop3_server = "mail.ustc.edu.cn" #如果不用科大邮箱，这里要改
+    time.sleep(3)
     LT=None
     while LT==None:
         LT=Email(email,password,pop3_server).get_LT()
