@@ -45,7 +45,7 @@ if 'Where' in driver.title:
         LT=None
         while LT==None:
             LT=Email(EmailAccount,EmailPasswd,pop3_server).get_LT()
-        driver.find_element_by_name("login").send_keys(LT)
+        driver.find_element_by_name("otp").send_keys(LT)
         driver.find_element_by_xpath('.//div[@id="login"]//button[@type="submit"]').click()
 
     
