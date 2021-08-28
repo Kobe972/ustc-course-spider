@@ -43,6 +43,7 @@ if 'Where' in driver.title:
         while LT==None:
             LT=Email(EmailAccount,EmailPasswd,pop3_server).get_LT()
         driver.find_element_by_name("otp").send_keys(LT)
+        print(driver.find_element_by_xpath('.//button[@type="submit"]'))
         driver.find_element_by_xpath('.//button[@type="submit"]').click()
 
 #搜索仓库
