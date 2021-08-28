@@ -24,8 +24,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
         pip install lxml
+        sudo apt-get update
         sudo apt-get install build-essential
-        sudo apt install yum
+        sudo apt-get install yum
         yum install xorg-x11-server-Xvfb
         pip install pyvirtualdisplay
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
