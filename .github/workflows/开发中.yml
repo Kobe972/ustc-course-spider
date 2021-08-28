@@ -24,6 +24,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
         pip install lxml
+        sudo apt-get install build-essential
         sudo apt install yum
         yum install xorg-x11-server-Xvfb
         pip install pyvirtualdisplay
