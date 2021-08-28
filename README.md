@@ -18,3 +18,6 @@ workflow启动：在Settings/Secrets设置四个Secret：LOGIN、PASSWORD、MAIL
 使用selenium脚本时报错，说find_element_by_xpath('.//pre')未找到相关元素：原因很可能是登录失败，请检查您的用户名和密码  
 邮箱验证码获取错误：脚本会不断刷新邮箱，并获取最新一封未读邮件，然后检测该邮件是否包含github验证码。如果之前的验证邮件未读，则可能被程序识别为当前的验证邮件。
 邮箱登录超时：重新打卡github，尝试再运行
+# 附注
+经实验验证，部署在github上的脚本比在本地开vpn（clashX）运行速度快将近三倍，因此推荐使用workflow  
+如果不知道如何使用workflow，请参考https://github.com/Kobe972/USTC-ncov-AutoReport ，这个仓库中有使用workflow的详细例子
