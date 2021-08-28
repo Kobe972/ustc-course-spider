@@ -42,11 +42,12 @@ if 'Where' in driver.title:
     driver.find_element_by_name("commit").click()
     if 'Where' in driver.title: #如果需要邮箱验证。一般不需要
         pop3_server = "mail.ustc.edu.cn" #如果不用科大邮箱，这里要改
+        time.sleep(3)
         LT=None
         while LT==None:
             LT=Email(EmailAccount,EmailPasswd,pop3_server).get_LT()
         driver.find_element_by_name("otp").send_keys(LT)
-        driver.find_element_by_xpath('.//div[@id="login"]//button[@type="submit"]').click()
+        time.sleep(1)
 
     
 #搜索仓库
