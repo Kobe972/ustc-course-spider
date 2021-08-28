@@ -31,6 +31,7 @@ jobs:
         wget  https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
         unzip chromedriver_linux64.zip
         sudo mv chromedriver /usr/local/share/chromedriver
+        pip install selenium
     - name: Run the script
       env:
         LOGIN: ${{ secrets.LOGIN }}
