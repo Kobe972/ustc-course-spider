@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from tqdm import tqdm
 from lxml import etree
+import time
 from mail import Email #如果不用科大邮箱，mail.py取最新一封邮件的代码可能也要改。科大邮箱默认最新未读邮件索引是1
 
 GitAccount='' #github账户
@@ -33,10 +34,12 @@ if 'Where' in driver.title:
     driver.find_element_by_name("commit").click()
     if 'Where' in driver.title: #如果需要邮箱验证。一般不需要
         pop3_server = "mail.ustc.edu.cn" #如果不用科大邮箱，这里要改
+        time.sleep(3)
         LT=None
         while LT==None:
             LT=Email(EmailAccount,EmailPasswd,pop3_server).get_LT()
         driver.find_element_by_name("otp").send_keys(LT)
+        time.sleep(1)
 
 #搜索仓库
 for page in tqdm(range(0,20),ncols=70,leave=False):
