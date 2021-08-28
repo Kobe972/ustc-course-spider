@@ -67,3 +67,4 @@ for page in tqdm(range(0,20),ncols=70,leave=False):
                 with open('findings.txt','a') as fd:
                     fd.write('https://github.com'+href+'\n')
                 break
+driver.close()
