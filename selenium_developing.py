@@ -13,13 +13,14 @@ from lxml import etree
 from mail import Email #如果不用科大邮箱，mail.py取最新一封邮件的代码可能也要改。科大邮箱默认最新未读邮件索引是1
 
 parser = argparse.ArgumentParser(description='Ustc-course Spyder')
-parser.add_argument('login', help='email address or github name', type=str)
+parser.add_argument('login', help='github account', type=str)
 parser.add_argument('password', help='your password of GitHub', type=str)
+parser.add_argument('mail', help='email address', type=str)
 parser.add_argument('mailpassword', help='your password of your USTC email', type=str)
 args = parser.parse_args()
 GitAccount=args.login #github账户
 GitPasswd=args.password #github密码
-EmailAccount=args.login #邮箱账户，如果Chrome登录github不需要验证则可以放空
+EmailAccount=args.mail #邮箱账户，如果Chrome登录github不需要验证则可以放空
 EmailPasswd=args.mailpassword #邮箱密码
 names=['数据结构','structure'] #匹配条件，即合格的文件名必须至少包含列表中的一个字符串，这是为了防止中英文、习惯用语等导致的不匹配
 search='ustc course' #搜索关键字，这里是ustc+course，一般不用改，要是想搜其他仓库也可以改（本程序可以搜的不仅仅是课程资料）
@@ -57,7 +58,7 @@ for page in tqdm(range(0,20),ncols=70,leave=False):
     text=driver.page_source
     html=etree.HTML(text)
     repo=html.xpath('.//a[@class="v-align-middle"]/@href')
-    for href in tqdm(repo,ncols=70,leave=False):
+    for href in repo:
         driver.get('https://github.com'+href)
         text=driver.page_source
         html=etree.HTML(text)
@@ -73,6 +74,6 @@ for page in tqdm(range(0,20),ncols=70,leave=False):
         text=text.lower()
         for name in names:
             if name in text:
-                with open('findings.txt','a') as fd:
-                    fd.write('https://github.com'+href+'\n')
+                content+='https://github.com'+href+'\n'
                 break
+print(content)
