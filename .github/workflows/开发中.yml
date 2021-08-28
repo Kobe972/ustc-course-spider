@@ -24,15 +24,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
         pip install lxml
-        sudo apt-get install xorg-x11-server-Xvfb
-        pip install pyvirtualdisplay
+        sudo apt-get install libxss1 libappindicator1 libindicator7
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        sudo dpkg -i google-chrome*
-        sudo apt-get -f install
+        sudo dpkg -i google-chrome*.deb
+        sudo apt-get install -f
         wget  https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
-        cp ./chromedriver_linux64.zip /home/chromedriver_linux64.zip
-        unzip /home/chromedriver_linux64.zip
-        ls /home
+        unzip chromedriver_linux64.zip
+        sudo mv chromedriver /usr/local/share/chromedriver
+        sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
     - name: Run the script
       env:
         LOGIN: ${{ secrets.LOGIN }}
