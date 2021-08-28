@@ -9,10 +9,10 @@ from tqdm import tqdm
 from lxml import etree
 from mail import Email #如果不用科大邮箱，mail.py取最新一封邮件的代码可能也要改。科大邮箱默认最新未读邮件索引是1
 
-GitAccount='******' #github账户
-GitPasswd='******' #github密码
-EmailAccount='******@mail.ustc.edu.cn' #邮箱账户，如果Chrome登录github不需要验证则可以放空
-EmailPasswd='******' #邮箱密码
+GitAccount='' #github账户
+GitPasswd='' #github密码
+EmailAccount='*@mail.ustc.edu.cn' #邮箱账户，如果Chrome登录github不需要验证则可以放空
+EmailPasswd='' #邮箱密码
 names=['数据结构','structure'] #匹配条件，即合格的文件名必须至少包含列表中的一个字符串，这是为了防止中英文、习惯用语等导致的不匹配
 search='ustc course' #搜索关键字，这里是ustc+course，一般不用改，要是想搜其他仓库也可以改（本程序可以搜的不仅仅是课程资料）
 search=search.replace(' ','+') #转换成url要求的格式
@@ -63,5 +63,5 @@ for page in tqdm(range(0,20),ncols=70,leave=False):
         for name in names:
             if name in text:
                 with open('findings.txt','a') as fd:
-                    fd.write(href+'\n')
+                    fd.write('https://github.com'+href+'\n')
                 break
