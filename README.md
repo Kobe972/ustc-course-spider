@@ -5,7 +5,9 @@
 # 使用说明
 ## 正常版本
 命令行启动：
-'''github.py data.json(表单文件地址) github用户名 github密码 ustc邮箱密码'''
+```shell
+github.py data.json(表单文件地址) github用户名 github密码 ustc邮箱密码
+```
 这里github的用户名必须为邮箱，否则请自行修改代码  
 workflow启动：在Settings/Secrets设置三个Secret：LOGIN、PASSWORD、MAILPASSWORD，对应用户名、github密码、邮箱密码，然后在Action启动workflow  
 ## selenium脚本
