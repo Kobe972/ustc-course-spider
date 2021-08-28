@@ -77,3 +77,4 @@ for page in tqdm(range(0,20),ncols=70,leave=False):
                 content+='https://github.com'+href+'\n'
                 break
 print(content)
+driver.close()
