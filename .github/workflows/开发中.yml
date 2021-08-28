@@ -1,0 +1,41 @@
+# Auto-report action script, 3 times a day
+
+name: Spyder action
+
+on: 
+  workflow_dispatch:
+  #push:
+    #branches:
+      #- main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+        pip install lxml
+        yum install xorg-x11-server-Xvfb
+        pip install pyvirtualdisplay
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome*
+        sudo apt-get -f install
+        wget  https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
+        cp ./chromedriver_linux64.zip /home/chromedriver_linux64.zip
+        unzip /home/chromedriver_linux64.zip
+    - name: Run the script
+      env:
+        LOGIN: ${{ secrets.LOGIN }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        MAILPASSWD: ${{ secrets.MAILPASSWORD }}
+      run: |
+        python selenium_version.py "$LOGIN" "$PASSWORD" "$MAILPASSWD"
