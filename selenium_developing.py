@@ -34,49 +34,20 @@ driver = webdriver.Chrome(options=option)
 driver.implicitly_wait(req_timeout)
 
 #登录github
-session=requests.Session()
-form=session.get('https://github.com/login').text
-form=etree.HTML(form)
-authenticity_token=form.xpath('.//input[@name="authenticity_token"]/@value')
-timestamp=form.xpath('.//input[@name="timestamp"]/@value')
-timestamp_secret=form.xpath('.//input[@name="timestamp_secret"]/@value')
-field=form.xpath('.//input[@type="text" and contains(@name,"required")]/@name')
-data={
-    "commit": "Sign in",
-    "trusted_device": "",
-    "webauthn-support": "supported",
-    "webauthn-iuvpaa-support": "unsupported",
-    "return_to": "https://github.com/login",
-    "allow_signup":"",
-    "client_id":"",
-    "integration":"",
-    "authenticity_token":authenticity_token[0],
-    "timestamp":timestamp[0],
-    "timestamp_secret":timestamp_secret[0],
-    "login":args.login,
-    "password":args.password,
-    field[0]:""
-}
-text=session.post('https://github.com/session',data=data).text
+driver.get('https://github.com')
+if 'Where' in driver.title:
+    driver.get('https://github.com/login')
+    driver.find_element_by_name("login").send_keys(GitAccount)
+    driver.find_element_by_name("password").send_keys(GitPasswd)
+    driver.find_element_by_name("commit").click()
+    if 'Where' in driver.title: #如果需要邮箱验证。一般不需要
+        pop3_server = "mail.ustc.edu.cn" #如果不用科大邮箱，这里要改
+        LT=None
+        while LT==None:
+            LT=Email(EmailAccount,EmailPasswd,pop3_server).get_LT()
+        driver.find_element_by_name("login").send_keys(LT)
+        driver.find_element_by_xpath('.//div[@id="login"]//button[@type="submit"]').click()
 
-#输入邮箱验证码
-if 'Device verification code' in text:
-    text=etree.HTML(text)
-    authenticity_token=text.xpath('.//input[@name="authenticity_token"]/@value')
-    email = args.login
-    password = args.mailpassword
-    pop3_server = "mail.ustc.edu.cn" #如果不用科大邮箱，这里要改
-    time.sleep(3)
-    LT=None
-    while LT==None:
-        LT=Email(email,password,pop3_server).get_LT()
-    data={'authenticity_token':authenticity_token[0],
-          'otp':LT}
-    session.post('https://github.com/sessions/verified-device',data=data)
-    
-cookies=session.cookies.get_dict()
-for k,v in cookies.items():
-    driver.add_cookie({"name":k,"value":v})
     
 #搜索仓库
 for page in tqdm(range(0,20),ncols=70,leave=False):
