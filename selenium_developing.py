@@ -16,7 +16,7 @@ parser.add_argument('password', help='your password of GitHub', type=str)
 parser.add_argument('mailpassword', help='your password of your USTC email', type=str)
 args = parser.parse_args()
 GitAccount=args.login #github账户
-GitPasswd=args.passeord #github密码
+GitPasswd=args.password #github密码
 EmailAccount=args.login #邮箱账户，如果Chrome登录github不需要验证则可以放空
 EmailPasswd=args.mailpassword #邮箱密码
 names=['数据结构','structure'] #匹配条件，即合格的文件名必须至少包含列表中的一个字符串，这是为了防止中英文、习惯用语等导致的不匹配
