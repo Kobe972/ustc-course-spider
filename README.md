@@ -4,6 +4,9 @@
 然而，我写了一个selenium版本，经测试有效。
 # 使用说明
 ## 正常版本
-命令行启动：github.py data.json github用户名 github密码 ustc邮箱密码  
+命令行启动：
+'''github.py data.json(表单文件地址) github用户名 github密码 ustc邮箱密码'''
 这里github的用户名必须为邮箱，否则请自行修改代码  
-workflow启动：在Settings/Secret设置三个Secret
+workflow启动：在Settings/Secrets设置三个Secret：LOGIN、PASSWORD、MAILPASSWORD，对应用户名、github密码、邮箱密码，然后在Action启动workflow  
+## selenium脚本
+编辑代码，将开头用户名、密码信息填写完整，并填上你像搜的课程，运行文件，搜索结果见同目录下的findings.txt。注意两种方式下必须保证脚本和mail.py在同一目录下。
