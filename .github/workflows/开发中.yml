@@ -32,10 +32,11 @@ jobs:
         wget  https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
         cp ./chromedriver_linux64.zip /home/chromedriver_linux64.zip
         unzip /home/chromedriver_linux64.zip
+        ls /home
     - name: Run the script
       env:
         LOGIN: ${{ secrets.LOGIN }}
         PASSWORD: ${{ secrets.PASSWORD }}
         MAILPASSWD: ${{ secrets.MAILPASSWORD }}
       run: |
-        python selenium_version.py "$LOGIN" "$PASSWORD" "$MAILPASSWD"
+        #python selenium_version.py "$LOGIN" "$PASSWORD" "$MAILPASSWD"
