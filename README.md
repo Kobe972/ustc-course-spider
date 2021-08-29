@@ -14,7 +14,7 @@ workflow启动：
 3、在Settings/Secrets设置四个Secret：LOGIN、PASSWORD、MAIL、MAILPASSWORD，对应github用户名、github密码、邮箱地址、邮箱密码。  
 ![](img/secret.png)
 4、在Action选项卡中启动workflow，运行结果可在日志中看到。
-![](img/workflow.png)  
+![](img/workflow.png)
 ![](img/log.png)
 ## 本地selenium脚本
 编辑代码，将开头用户名、密码信息填写完整，并填上你像搜的课程，运行文件，搜索结果见同目录下的findings.txt。注意两种方式下必须保证脚本和mail.py在同一目录下。
@@ -29,7 +29,7 @@ workflow启动：
 4、github无法登录，去掉无头模式后显示用户名或密码错误：找回密码，我遇到过这个问题但是不知道为什么，开发过程中共遇到两次这样的问题。
 # 附注
 1、经实验验证，部署在github上的脚本比在本地开vpn（clashX）运行速度快将近三倍，因此推荐使用workflow。  
-2、如果不知道如何使用workflow，请参考https://github.com/Kobe972/USTC-ncov-AutoReport ，这个仓库中有使用workflow的详细例子  。
+2、如果不知道如何使用workflow，请参考https://github.com/Kobe972/USTC-ncov-AutoReport ，这个仓库中有使用workflow的详细例子。  
 3、邮箱必须是github注册的邮箱，因为要收github发来的验证码。代码中默认是ustc邮箱，如果不是，应该把代码中pop3服务器地址更改，并且关注最新未读邮件的索引。ustc邮箱中最新未读邮件的索引是1，如果您的邮箱和这不同，也需要修改相应代码。最新邮件提取代码如图所示：  
 ![](img/index.png)  
 4、脚本也可做其他用途，它的主要功能是在一堆仓库中找出包含某类文件的仓库（比如文件名含有某些字符串）。
