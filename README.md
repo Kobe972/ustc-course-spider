@@ -5,9 +5,9 @@
 ## 终端版本
 命令行启动：
 ```shell
-python terminal_version.py github用户名 github密码 邮箱地址 ustc邮箱密码
+python terminal_version.py <LOGIN> <PASSWORD> <MAIL> <MAILPASSWORD>
 ```
-这里github的用户名必须为邮箱，否则请自行修改代码  
+其中LOGIN是GitHub用户名，PASSWORD是GitHub密码，MAIL是GitHub绑定的邮箱，这里默认科大邮箱，如果不是请参见附注修改代码，MAILPASSWORD是邮箱密码。  
 workflow启动：在Settings/Secrets设置四个Secret：LOGIN、PASSWORD、MAIL、MAILPASSWORD，对应github用户名、github密码、邮箱地址、邮箱密码，然后在Action启动workflow，运行结果可在日志中看到。  
 ## selenium脚本
 编辑代码，将开头用户名、密码信息填写完整，并填上你像搜的课程，运行文件，搜索结果见同目录下的findings.txt。注意两种方式下必须保证脚本和mail.py在同一目录下。
