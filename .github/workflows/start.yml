@@ -1,6 +1,4 @@
-# Auto-report action script, 3 times a day
-
-name: Spyder action
+name: Spider action
 
 on: 
   workflow_dispatch:
