@@ -16,8 +16,9 @@ workflow启动：
 4、在Action选项卡中启动workflow，运行结果可在日志中看到。
 ![](img/workflow.png)
 ![](img/log.png)
-## selenium脚本
+## 本地selenium脚本
 编辑代码，将开头用户名、密码信息填写完整，并填上你像搜的课程，运行文件，搜索结果见同目录下的findings.txt。注意两种方式下必须保证脚本和mail.py在同一目录下。
+![](img/edit.png)
 # 优点
 可以辅助提升GPA，助你成为卷王  
 可以爬取整个目录，而不是view code中显示的一层。
