@@ -46,6 +46,7 @@ if 'Where' in driver.title:
         time.sleep(3)
         LT=None
         while LT==None:
+            time.sleep(1)
             LT=Email(EmailAccount,EmailPasswd,pop3_server).get_LT()
         driver.find_element_by_name("otp").send_keys(LT)
         time.sleep(1)
