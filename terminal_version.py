@@ -69,7 +69,7 @@ for page in tqdm(range(0,20),ncols=70,leave=False):
         driver.get('https://github.com'+href+'/find/'+branch[0])
         text=driver.page_source
         html=etree.HTML(text)
-        data_url=html.xpath('.//@data-url') #获取完整文件列表
+        data_url=html.xpath('.//virtual-filter-input/@src') #获取完整文件列表
         driver.get('https://github.com'+data_url[0]) #获取所有目录
         text=driver.find_element_by_xpath('.//pre').text
         text=text.lower()
