@@ -70,7 +70,7 @@ for page in tqdm(range(0,20),ncols=70,leave=False):
         driver.get('https://github.com'+href+'/find/'+branch[0])
         text=driver.page_source
         #html=etree.HTML(text)
-        data_url=re.match('('+href+'/tree-list/\w+)',text).group(1)
+        data_url=re.search('('+href+'/tree-list/\w+)',text).group(1)
         #data_url=html.xpath('.//virtual-filter-input/@src') #获取完整文件列表，该方法不稳定，已停用
         #driver.get('https://github.com'+data_url[0]) #获取所有目录
         driver.get('https://github.com'+data_url) #获取所有目录
