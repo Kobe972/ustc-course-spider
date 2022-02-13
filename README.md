@@ -8,7 +8,7 @@
 python main.py <TOKEN>
 ```
 其中TOKEN是GitHub的token，可以去设置页面生成。  
-默认搜索运筹学资料，可以修改源码第3、4行个性化搜索。
+默认搜索运筹学资料，可以修改源码第3、4行个性化搜索。  
 workflow启动：  
 1、将代码fork到自己的仓库。  
 2、点击Actions选项卡，点击`I understand my workflows, go ahead and enable them`。  
