@@ -1,7 +1,11 @@
 import requests
-token="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"
-keys=['运筹学']
-search='ustc course'
+import argparse
+keys=['运筹学'] #这里放文件名中要有的关键字
+search='ustc course' #这里放搜索关键字
+parser = argparse.ArgumentParser(description='Ustc-course Spyder')
+parser.add_argument('token', help='token for your github account', type=str)
+args = parser.parse_args()
+token=args.token
 headers={"Authorization":"token "+token}
 search=search.replace(' ','+')
 url_list=[]
@@ -16,7 +20,7 @@ for page in range(1,11):
         content=requests.get(tree_url,headers=headers)
         if 'tree' not in content.json().keys():
             continue
-        files=''
+        files=full_name
         for file in content.json()["tree"]:
             files+=file['path']
         for key in keys:
