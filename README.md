@@ -9,7 +9,7 @@
 python main.py <TOKEN>
 ```
 其中TOKEN是GitHub的token，可以去设置页面生成。  
-默认搜索运筹学资料，可以修改源码第3、4行个性化搜索。  
+可以修改源码第3、4行个性化搜索，设置想搜的学科甚至是外校的仓库（如把搜索关键词由'ustc course'改为'pku course'可搜索北大的学习资料，不过一般都不需要）  
 workflow启动：  
 1、将代码fork到自己的仓库。  
 2、点击Actions选项卡，点击`I understand my workflows, go ahead and enable them`。  
