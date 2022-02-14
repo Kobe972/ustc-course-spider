@@ -1,6 +1,6 @@
 import requests
 import argparse
-keys=['运筹学'] #这里放文件名中要有的关键字
+keys=['算法','algorithm'] #这里放文件名中要有的关键字
 search='ustc course' #这里放搜索关键字
 parser = argparse.ArgumentParser(description='Ustc-course Spyder')
 parser.add_argument('token', help='token for your github account', type=str)
@@ -20,9 +20,9 @@ for page in range(1,11):
         content=requests.get(tree_url,headers=headers)
         if 'tree' not in content.json().keys():
             continue
-        files=full_name
+        files=full_name.lower()
         for file in content.json()["tree"]:
-            files+=file['path']
+            files+=file['path'].lower()
         for key in keys:
             if key in files:
                 url_list.append('https://github.com/'+full_name)
