@@ -13,7 +13,6 @@ workflow启动：
 1、将代码fork到自己的仓库。  
 2、点击Actions选项卡，点击`I understand my workflows, go ahead and enable them`。  
 3、在Settings/Secrets设置TOKEN。  
-下面的图是用于旧版脚本的，实际上只需添加一个TOKEN变量。
 ![](img/secret.png)
 4、在Action选项卡中启动workflow，运行结果可在日志中看到。
 ![](img/workflow.png)
