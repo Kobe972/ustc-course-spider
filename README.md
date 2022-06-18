@@ -26,3 +26,6 @@ workflow启动：
 # 附注
 1、脚本也可做其他用途，比如搜其他学校的课程。它的主要功能是在一堆仓库中找出包含某类文件的仓库（比如文件名含有某些字符串）。  
 2、熟悉正则表达式的可以改成更强大的正则表达式搜索。
+
+# Stargazers over time
+[![Stargazers over time](https://starchart.cc/Kobe972/ustc-course-spider.svg)](https://starchart.cc/Kobe972/ustc-course-spider)
